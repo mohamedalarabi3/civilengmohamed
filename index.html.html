@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>تطبيق  كمية مواد البناء المستخدمة في السكنية  </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input[type="number"] {
+            padding: 5px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #results {
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+    <script>
+        function calculate() {
+            var floorCount = parseInt(document.getElementById("floorCount").value);
+            var floorArea = parseFloat(document.getElementById("floorArea").value);
+
+            var concreteQuantity =  (floorArea * 0.6) + (floorCount-1)*floorArea*0.3;
+            var cementQuantity = concreteQuantity * 7;
+            var sandQuantity = concreteQuantity * 0.4;
+            var gravelQuantity = concreteQuantity * 0.80;
+            var bricksQuantity = floorCount* floorArea * 90 ;
+            var waterQuantity = cementQuantity * 25;
+
+            var resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "كمية الخرسانة المطلوبة في المبنى هي: " + concreteQuantity + " متر مكعب" + "<br>" +
+                "كمية الماء: " + waterQuantity + "<br>" +
+                "كمية الإسمنت المطلوبة في المبنى هي: " + cementQuantity + " شيكارة (طن)" + "<br>" +
+                "كمية الرمل المطلوبة في المبنى هي: " + sandQuantity + " متر مكعب" + "<br>" +
+                "كمية الحصى المطلوبة في المبنى هي: " + gravelQuantity + " متر مكعب " + "<br>" +
+                "عدد الطوب المطلوب في المبنى هو: " + bricksQuantity + " طوبة";
+        }
+    </script>
+</head>
+<body>
+    <h1>تطبيق حساب البناء</h1>
+    <label for="floorCount">عدد الأدوار في المبنى: </label>
+    <input type="number" id="floorCount"><br><br>
+
+    <label for="floorArea">مساحة الطابق الواحد في المبنى (بالمتر المربع): </label>
+    <input type="number" step="0.01" id="floorArea"><br><br>
+
+    <button onclick="calculate()">حساب</button>
+    
+    <div id="results"></div>
+   <h6>اعداد الطالب محمد عبد الكريم حسين </h6>
+  
+</body>
+</html>
